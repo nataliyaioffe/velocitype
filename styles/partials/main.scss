@@ -1,43 +1,51 @@
 .wrapper {
-    margin: 0 auto;
-    width: 90vw;
-    padding: 30px 0;
-    max-width: 1280px;
-    text-align: center;
+  margin: 0 auto;
+  width: 90vw;
+  padding: 30px 0;
+  max-width: 1280px;
+  text-align: center;
 }
 
 .current-word {
-    padding-top: 50px;
-    font-size: 5rem;
+  padding-top: 50px;
+  font-size: 5rem;
 }
 
 input {
-    margin: 50px 0;
-    padding: 5px;
+  margin: 50px 0;
+  padding: 5px;
 }
 
 .time-score {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 body {
-    position: relative;
+  position: relative;
+  height: 100vh;
+  /* fallback for old browsers */
+  background: #e96443; 
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right,#904e95,#e96443);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to top,#904e95,#e96443); 
 }
 .modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background: darkgrey;
-    overflow-x: hidden;
-    transition: left .35s ease-out;
+  background: darken(#904e95, 15%); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-x: hidden;
+  transition: left 0.4s ease-out;
+  color: rgba(255,255,255,0.5);
 }
 
 .swipe {
-    left: -100vw;
+  left: -100%;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }

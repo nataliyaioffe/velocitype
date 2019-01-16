@@ -187,22 +187,33 @@ input {
   padding-bottom: 50px; }
 
 body {
-  position: relative; }
+  position: relative;
+  height: 100vh;
+  /* fallback for old browsers */
+  background: #e96443;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #904e95, #e96443);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-gradient(linear, left bottom, left top, from(#904e95), to(#e96443));
+  background: -webkit-linear-gradient(bottom, #904e95, #e96443);
+  background: -o-linear-gradient(bottom, #904e95, #e96443);
+  background: linear-gradient(to top, #904e95, #e96443); }
 
 .modal {
+  background: #5f3463;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  bottom: 0;
   width: 100%;
-  background: darkgrey;
   overflow-x: hidden;
-  -webkit-transition: left .35s ease-out;
-  -o-transition: left .35s ease-out;
-  transition: left .35s ease-out; }
+  -webkit-transition: left 0.4s ease-out;
+  -o-transition: left 0.4s ease-out;
+  transition: left 0.4s ease-out;
+  color: rgba(255, 255, 255, 0.5); }
 
 .swipe {
-  left: -100vw; }
+  left: -100%; }
 
 header {
   text-align: center; }

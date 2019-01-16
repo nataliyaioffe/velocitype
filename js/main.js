@@ -98,10 +98,10 @@ function checkStatus() {
 function doAxios() {
   $.ajax({
     method: "GET",
-    url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=350&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+    url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=article%2C%20abbreviation%2C%20family-name%2C%20given-name%2C%20proper-noun%2C%20proper-noun-plural%2C%20proper-noun-posessive&minCorpusCount=5000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=350&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
     dataType: "json"
   }).then(res => {
-    app.wordList = res
+    app.wordList = res;
     console.log("API call");
     showWord();
   });
