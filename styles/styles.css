@@ -191,9 +191,10 @@ input[type="radio"] {
   display: none; }
 
 .levels label {
+  background: #5f3463;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 150px;
-  padding: 20px 0;
+  width: 125px;
+  padding: 15px 0;
   margin: 0 5px;
   display: inline-block;
   -webkit-transition: background 0.15s ease-out;
@@ -201,7 +202,8 @@ input[type="radio"] {
   transition: background 0.15s ease-out; }
 
 input[type="radio"]:checked + label {
-  background: rgba(255, 255, 255, 0.25); }
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75); }
 
 .time-score {
   padding-bottom: 50px; }
