@@ -179,9 +179,29 @@ h1 span {
   padding-top: 50px;
   font-size: 5rem; }
 
-input {
+.level {
+  display: inline-block;
+  margin: 50px 0; }
+
+input[type="text"] {
   margin: 50px 0;
   padding: 5px; }
+
+input[type="radio"] {
+  display: none; }
+
+.levels label {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 150px;
+  padding: 20px 0;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-transition: background 0.15s ease-out;
+  -o-transition: background 0.15s ease-out;
+  transition: background 0.15s ease-out; }
+
+input[type="radio"]:checked + label {
+  background: rgba(255, 255, 255, 0.25); }
 
 .time-score {
   padding-bottom: 50px; }
@@ -207,9 +227,9 @@ body {
   bottom: 0;
   width: 100%;
   overflow-x: hidden;
-  -webkit-transition: left 0.4s ease-out;
-  -o-transition: left 0.4s ease-out;
-  transition: left 0.4s ease-out;
+  -webkit-transition: left 0.3s ease-out;
+  -o-transition: left 0.3s ease-out;
+  transition: left 0.3s ease-out;
   color: rgba(255, 255, 255, 0.5); }
 
 .swipe {

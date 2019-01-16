@@ -11,9 +11,30 @@
   font-size: 5rem;
 }
 
-input {
+.level {
+  display: inline-block;
+  margin: 50px 0;
+}
+input[type="text"] {
   margin: 50px 0;
   padding: 5px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.levels label {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 150px;
+  padding: 20px 0;
+  margin: 0 5px;
+  display: inline-block;
+  transition: background 0.15s ease-out;
+}
+
+input[type="radio"]:checked + label {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .time-score {
@@ -24,22 +45,22 @@ body {
   position: relative;
   height: 100vh;
   /* fallback for old browsers */
-  background: #e96443; 
+  background: #e96443;
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right,#904e95,#e96443);
+  background: -webkit-linear-gradient(to right, #904e95, #e96443);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to top,#904e95,#e96443); 
+  background: linear-gradient(to top, #904e95, #e96443);
 }
 .modal {
-  background: darken(#904e95, 15%); 
+  background: darken(#904e95, 15%);
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   width: 100%;
   overflow-x: hidden;
-  transition: left 0.4s ease-out;
-  color: rgba(255,255,255,0.5);
+  transition: left 0.3s ease-out;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .swipe {
