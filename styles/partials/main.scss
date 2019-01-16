@@ -1,10 +1,3 @@
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-size: 2rem;
-}
 .wrapper {
     margin: 0 auto;
     width: 90vw;
@@ -25,4 +18,26 @@ input {
 
 .time-score {
     padding-bottom: 50px;
+}
+
+body {
+    position: relative;
+}
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: darkgrey;
+    overflow-x: hidden;
+    transition: left .35s ease-out;
+}
+
+.swipe {
+    left: -100vw;
+}
+
+header {
+    text-align: center;
 }

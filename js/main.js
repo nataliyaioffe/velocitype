@@ -3,8 +3,6 @@ $(function() {
   init();
 });
 
-// global variables
-
 // Available levels
 const levels = {
   easy: 5,
@@ -13,8 +11,6 @@ const levels = {
 };
 
 // to change level
-// const currentLevel = levels.easy
-// let currentLevel = levels[$("input[type='radio']:checked").val()];
 let currentLevel = levels[$("input[name='level']:checked").val()];
 let time = currentLevel;
 let score = 0;
@@ -22,30 +18,6 @@ let isPlaying;
 
 $("#seconds").html(currentLevel);
 $("#time").html(time);
-
-const words = [
-  "Lorem",
-  "ipsum",
-  "dolor sit amet",
-  "consectetur",
-  "adipisicing elit",
-  "provident",
-  "quae",
-  "eaque",
-  "iste omnis",
-  "molestias",
-  "reprehenderit",
-  "expedita",
-  "voluptas",
-  "quisquam",
-  "consectetur",
-  "pariatur",
-  "cumque",
-  "laudantium",
-  "voluptatibus",
-  "voluptatum",
-  "quasi"
-];
 
 // Initialize Game
 function init() {
@@ -56,11 +28,21 @@ function init() {
     $("#time").html(time);
   });
 
+  $("#start").on("click", function() {
+    $(".modal").addClass("swipe");
+  })
+
+
+  $("#menu").on("click", function () {
+    $(".modal").removeClass("swipe");
+  })
+
   doAxios();
   $("#word-input").on("change", startMatch);
   setInterval(countdown, 1000);
   setInterval(checkStatus, 50);
 }
+
 
 // Start match
 function startMatch() {
