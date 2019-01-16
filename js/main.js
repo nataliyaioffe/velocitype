@@ -56,15 +56,9 @@ function init() {
     $("#time").html(time);
   });
 
-  $(".button").on("click", function() {
-    doAxios();
-  });
-
-  showWord(words);
+  doAxios();
   $("#word-input").on("change", startMatch);
-  // Call countdown every second
   setInterval(countdown, 1000);
-  // Check game status
   setInterval(checkStatus, 50);
 }
 
@@ -73,11 +67,10 @@ function startMatch() {
   if (matchWords()) {
     isPlaying = true;
     time = currentLevel + 1;
-    showWord(words);
+    showWord();
     $("#word-input").val("");
     score++;
   }
-  // if score is -1, display 0
   if (score === -1) {
     $("#score").html(0);
   } else {
@@ -95,12 +88,11 @@ function matchWords() {
   }
 }
 
-// pick & show random word
-function showWord(words) {
-  // Generate random array index
-  const randIndex = Math.floor(Math.random() * words.length);
-  // Output random word
-  $("#current-word").html(words[randIndex]);
+// // pick & show random word
+function showWord() {
+  const randIndex = Math.floor(Math.random() * app.wordList.length);
+  app.newWord = app.wordList[randIndex].word;
+  $("#current-word").html(app.newWord);
 }
 
 // Countdown timer
@@ -110,7 +102,6 @@ function countdown() {
   } else if (time === 0) {
     isPlaying = false;
   }
-  // Show time
   $("#time").html(time);
 }
 
@@ -125,9 +116,13 @@ function checkStatus() {
 function doAxios() {
   $.ajax({
     method: "GET",
-    url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=500&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+    url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=350&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
     dataType: "json"
   }).then(res => {
-    console.log(res);
+    app.wordList = res
+    console.log("API call");
+    showWord();
   });
 }
+
+const app = {}
