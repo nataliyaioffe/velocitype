@@ -1,0 +1,28 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2rem;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 90vw;
+    padding: 30px 0;
+    max-width: 1280px;
+    text-align: center;
+}
+
+.current-word {
+    padding-top: 50px;
+    font-size: 5rem;
+}
+
+input {
+    margin: 50px 0;
+    padding: 5px;
+}
+
+.time-score {
+    padding-bottom: 50px;
+}
