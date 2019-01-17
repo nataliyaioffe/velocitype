@@ -10,6 +10,10 @@ body {
   background: linear-gradient(to top, #904e95, #e96443);
 }
 
+.red {
+  background: red;
+}
+
 .wrapper {
   margin: 0 auto;
   width: 90vw;
@@ -40,3 +44,14 @@ input[type="text"] {
 
 
 
+.timer {
+  width: 0px;
+  height: 50px;
+  background: white;
+  transition: all 10s linear;
+}
+
+.active {
+  background: blue;
+  width: 1000px;
+}

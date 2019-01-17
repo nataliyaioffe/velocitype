@@ -4,55 +4,63 @@ $(function() {
 });
 
 // Available levels
-const levels = {
-  easy: 5,
-  medium: 3,
-  hard: 2
-};
+// const levels = {
+//   easy: 5,
+//   medium: 3,
+//   hard: 2
+// };
 
 // to change level
-let currentLevel = levels[$("input[name='level']:checked").val()];
-let time = currentLevel;
+// let currentLevel = levels[$("input[name='level']:checked").val()];
+// let time = currentLevel;
+
+time = 10;
 let score = 0;
 let isPlaying;
 
-$("#seconds").html(currentLevel);
+// $("#seconds").html(currentLevel);
 $("#time").html(time);
 
 // Initialize Game
 function init() {
-  $("input[name='level']").on("click", function() {
-    currentLevel = levels[this.value];
-    time = currentLevel;
-    $("#seconds").html(currentLevel);
-    $("#time").html(time);
-  });
+  // $("input[name='level']").on("click", function() {
+  //   currentLevel = levels[this.value];
+  //   time = currentLevel;
+  //   $("#seconds").html(currentLevel);
+  //   $("#time").html(time);
+  // });
 
   $("#start").on("click", function() {
     $(".modal").addClass("swipe");
   })
 
+  doAxios();
+
+  $("#word-input").on("keypress", function() {
+    startMatch();
+  })
+
+  setInterval(countdown, 1000);
+  setInterval(checkStatus, 50);
 
   $("#menu").on("click", function () {
     $(".modal").removeClass("swipe");
   })
-
-  doAxios();
-  $("#word-input").on("change", startMatch);
-  setInterval(countdown, 1000);
-  setInterval(checkStatus, 50);
 }
 
 
 // Start match
 function startMatch() {
+  isPlaying = true;
+
+  $(".timer").addClass("active");
+
   if (matchWords()) {
-    isPlaying = true;
-    time = currentLevel + 1;
     showWord();
     $("#word-input").val("");
     score++;
   }
+
   if (score === -1) {
     $("#score").html(0);
   } else {
@@ -60,12 +68,14 @@ function startMatch() {
   }
 }
 
+
+
 // match currentWord to wordInput
 function matchWords() {
   if ($("#word-input").val() === $("#current-word").html()) {
     return true;
   } else {
-    $("#message").html("FALSE!!!");
+    $("#message").html("");
     return false;
   }
 }

@@ -10,33 +10,34 @@
   <body>
       <div class="modal">
         <div class="wrapper">
-
-          <h1>VELOCI<span>TYPE</span></h1>
-          <div class="instructions">
-            <h5>Instructions</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint error explicabo quasi consectetur, architecto quod sapiente.</p>
-          </div>
-
-          <div class="levels">
-            <div class="level">
-              <input type="radio" name="level" id="level-easy" value="easy" checked></input>
-              <label for="level-easy">Easy</label>
+          <div class="game-setup">
+            <h1>VELOCI<span>TYPE</span></h1>
+            <div class="instructions">
+              <h5>Instructions</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint error explicabo quasi consectetur, architecto quod sapiente.</p>
             </div>
-          <div class="level">
-            <input type="radio" name="level" id="level-medium" value="medium"></input>
-            <label for="level-medium">Medium</label>
-          </div>
-          <div class="level">
-            <input type="radio" name="level" id="level-hard" value="hard"></input>
-            <label for="level-hard">Hard</label>
-          </div>
-        </div>
 
-          <button id="start">Start</button>
+            <div class="levels">
+              <div class="level">
+                <input type="radio" name="level" id="level-easy" value="easy" checked></input>
+                <label for="level-easy">Easy</label>
+              </div>
+              <div class="level">
+                <input type="radio" name="level" id="level-medium" value="medium"></input>
+                <label for="level-medium">Medium</label>
+              </div>
+              <div class="level">
+                <input type="radio" name="level" id="level-hard" value="hard"></input>
+                <label for="level-hard">Hard</label>
+              </div>  
+            </div>
+            <button id="start">Start</button>
+
+          </div>
         </div>
       </div>
       <!-- end modal -->
-      
+
 
       <header>
         <h2>Veolcitype</h2>
@@ -45,7 +46,7 @@
       <main>
         <div class="wrapper">
         <div class="game">
-          <p>You have <span id="seconds">5</span> seconds to type...</p>
+          <p>You have <span id="seconds">60</span> seconds to type...</p>
 
           <h2 class="current-word" id="current-word"></h2>
 
@@ -63,6 +64,10 @@
         <div class="time-score">
           <h3>Time Left: <span id="time">0</span></h3>
           <h3>Score: <span id="score">0</span></h3>
+        </div>
+
+        <div class="timer">
+          
         </div>
 
           <button id="menu">Menu</button>

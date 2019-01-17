@@ -168,6 +168,22 @@ body {
 h1 span {
   font-style: italic; }
 
+body {
+  position: relative;
+  height: 100vh;
+  /* fallback for old browsers */
+  background: #e96443;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #904e95, #e96443);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-gradient(linear, left bottom, left top, from(#904e95), to(#e96443));
+  background: -webkit-linear-gradient(bottom, #904e95, #e96443);
+  background: -o-linear-gradient(bottom, #904e95, #e96443);
+  background: linear-gradient(to top, #904e95, #e96443); }
+
+.red {
+  background: red; }
+
 .wrapper {
   margin: 0 auto;
   width: 90vw;
@@ -175,17 +191,51 @@ h1 span {
   max-width: 1280px;
   text-align: center; }
 
+header {
+  text-align: center; }
+
 .current-word {
   padding-top: 50px;
   font-size: 5rem; }
 
-.level {
-  display: inline-block;
-  margin: 50px 0; }
-
 input[type="text"] {
   margin: 50px 0;
   padding: 5px; }
+
+.time-score {
+  padding-bottom: 50px; }
+
+.timer {
+  width: 0px;
+  height: 50px;
+  background: white;
+  -webkit-transition: all 10s linear;
+  -o-transition: all 10s linear;
+  transition: all 10s linear; }
+
+.active {
+  background: blue;
+  width: 1000px; }
+
+.modal {
+  background: #5f3463;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-transition: left 0.3s ease-out;
+  -o-transition: left 0.3s ease-out;
+  transition: left 0.3s ease-out;
+  color: rgba(255, 255, 255, 0.5); }
+
+.swipe {
+  left: -100%; }
+
+.level {
+  display: inline-block;
+  margin: 50px 0; }
 
 input[type="radio"] {
   display: none; }
@@ -204,38 +254,3 @@ input[type="radio"] {
 input[type="radio"]:checked + label {
   background: rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.75); }
-
-.time-score {
-  padding-bottom: 50px; }
-
-body {
-  position: relative;
-  height: 100vh;
-  /* fallback for old browsers */
-  background: #e96443;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #904e95, #e96443);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: -webkit-gradient(linear, left bottom, left top, from(#904e95), to(#e96443));
-  background: -webkit-linear-gradient(bottom, #904e95, #e96443);
-  background: -o-linear-gradient(bottom, #904e95, #e96443);
-  background: linear-gradient(to top, #904e95, #e96443); }
-
-.modal {
-  background: #5f3463;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  overflow-x: hidden;
-  -webkit-transition: left 0.3s ease-out;
-  -o-transition: left 0.3s ease-out;
-  transition: left 0.3s ease-out;
-  color: rgba(255, 255, 255, 0.5); }
-
-.swipe {
-  left: -100%; }
-
-header {
-  text-align: center; }
