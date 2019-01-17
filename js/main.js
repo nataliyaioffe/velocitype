@@ -3,38 +3,74 @@ $(function() {
   init();
 });
 
-// Available levels
-// const levels = {
-//   easy: 5,
-//   medium: 3,
-//   hard: 2
-// };
+const app = {};
 
-// to change level
-// let currentLevel = levels[$("input[name='level']:checked").val()];
-// let time = currentLevel;
-
-time = 10;
+time = 100;
+let currentLevel = "easy"
 let score = 0;
 let isPlaying;
+app.wordList = [];
 
-// $("#seconds").html(currentLevel);
-$("#time").html(time);
+
+const getWords = {
+  easy: function() {
+    $.ajax({
+      method: "GET",
+      url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20adjective%2C%20verb&minCorpusCount=20000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=8&limit=500&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+      dataType: "json"
+    }).then(res => {
+      console.log("API call--EASY");
+      res.map(wordObject => {
+        app.wordList.push(wordObject.word);
+      });
+      showWord();
+    });
+  },
+  medium: function() {
+    $.ajax({
+      method: "GET",
+      url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=8000&maxCorpusCount=-1&minDictionaryCount=50&maxDictionaryCount=-1&minLength=8&maxLength=-1&limit=500&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+      dataType: "json"
+    }).then(res => {
+      console.log("API call--MEDIUM");
+      res.map(wordObject => {
+        app.wordList.push(wordObject.word);
+      });
+      showWord();
+    });
+  },
+  hard: function() {
+    $.ajax({
+      method: "GET",
+      url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=amily-name%2C%20given-name%2C%20noun%2C%20proper-noun%20&minCorpusCount=-1&maxCorpusCount=8000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=6&maxLength=-1&limit=500&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+      dataType: "json"
+    }).then(res => {
+      console.log("API call--HARD");
+      res.map(wordObject => {
+        app.wordList.push(wordObject.word);
+      });
+      showWord();
+    });
+  }
+};
+
+
 
 // Initialize Game
 function init() {
-  // $("input[name='level']").on("click", function() {
-  //   currentLevel = levels[this.value];
-  //   time = currentLevel;
-  //   $("#seconds").html(currentLevel);
-  //   $("#time").html(time);
-  // });
+  $("#time").html(time);
+
+  // currentLevel = "easy"
+
+  $("input[name='level']").on("click", function() {
+    currentLevel = this.value;
+  });
 
   $("#start").on("click", function() {
+    getWords[currentLevel]();
     $(".modal").addClass("swipe");
   })
 
-  doAxios();
 
   $("#word-input").on("keypress", function() {
     startMatch();
@@ -68,7 +104,12 @@ function startMatch() {
   }
 }
 
-
+// // pick & show random word
+function showWord() {
+  const randIndex = Math.floor(Math.random() * app.wordList.length);
+  app.newWord = app.wordList[randIndex];
+  $("#current-word").html(app.newWord);
+}
 
 // match currentWord to wordInput
 function matchWords() {
@@ -78,13 +119,6 @@ function matchWords() {
     $("#message").html("");
     return false;
   }
-}
-
-// // pick & show random word
-function showWord() {
-  const randIndex = Math.floor(Math.random() * app.wordList.length);
-  app.newWord = app.wordList[randIndex].word;
-  $("#current-word").html(app.newWord);
 }
 
 // Countdown timer
@@ -105,16 +139,14 @@ function checkStatus() {
   }
 }
 
-function doAxios() {
-  $.ajax({
-    method: "GET",
-    url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=article%2C%20abbreviation%2C%20family-name%2C%20given-name%2C%20proper-noun%2C%20proper-noun-plural%2C%20proper-noun-posessive&minCorpusCount=5000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=350&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
-    dataType: "json"
-  }).then(res => {
-    app.wordList = res;
-    console.log("API call");
-    showWord();
-  });
-}
-
-const app = {}
+// function doAxios() {
+//   $.ajax({
+//     method: "GET",
+//     url: `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=article%2C%20abbreviation%2C%20family-name%2C%20given-name%2C%20proper-noun%2C%20proper-noun-plural%2C%20proper-noun-posessive&minCorpusCount=5000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=350&api_key=8a9b0d06fcbe4c1a3600007d0db03272061a9e7fe1453fe4a`,
+//     dataType: "json"
+//   }).then(res => {
+//     app.wordList = res;
+//     console.log("API call--EASY");
+//     showWord();
+//   });
+// }
